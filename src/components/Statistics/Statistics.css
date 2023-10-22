@@ -1,0 +1,7 @@
+.stats {
+  font-size: 20px;
+  font-weight: 500;
+}
+.stats > p {
+  margin: 8px 0;
+}

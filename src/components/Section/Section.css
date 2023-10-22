@@ -1,0 +1,9 @@
+.title {
+  margin: 20px 0;
+}
+
+.section {
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+}
