@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { Section } from './Section/Section.jsx';
+import { Notification } from './Notification/Notification.jsx';
+import { Statistics } from './Statistics/Statistics';
+import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 
 export class App extends Component {
   state = {
@@ -29,26 +33,24 @@ export class App extends Component {
   render() {
     const { good, neutral, bad } = this.state;
     const total = this.countTotalFeedback();
-    const percentage = this.countPositiveFeedbackPercentage();
+    const positivePercentage = this.countPositiveFeedbackPercentage();
 
     return (
       <div>
-        <h1>Please leave feedback</h1>
-        <button type="button" name="good" onClick={this.handleIncrement}>
-          Good
-        </button>
-        <button type="button" name="neutral" onClick={this.handleIncrement}>
-          Neutral
-        </button>
-        <button type="button" name="bad" onClick={this.handleIncrement}>
-          Bad
-        </button>
-        <h2>Statistics</h2>
-        <p>Good: {good}</p>
-        <p>Neutral: {neutral}</p>
-        <p>Bad: {bad}</p>
-        <p>Total: {total}</p>
-        <p>Positive feedback: {percentage}%</p>
+        <Section title="There is no feedback">
+          <FeedbackOptions onLeaveFeedback={this.handleIncrement} />
+          {total === 0 ? (
+            <Notification message="There is no feedback"></Notification>
+          ) : (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={total}
+              positivePercentage={positivePercentage}
+            />
+          )}
+        </Section>
       </div>
     );
   }
