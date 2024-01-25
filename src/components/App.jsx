@@ -37,7 +37,7 @@ export class App extends Component {
 
     return (
       <div>
-        <Section title="There is no feedback">
+        <Section title="Please leave your feedback">
           <FeedbackOptions onLeaveFeedback={this.handleIncrement} />
           {total === 0 ? (
             <Notification message="There is no feedback"></Notification>
